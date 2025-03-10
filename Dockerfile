@@ -18,4 +18,5 @@ WORKDIR /app
 # Set the PYTHONPATH environment variable
 ENV PYTHONPATH=/app
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
+# Use the PORT environment variable from Cloud Run (default to 8080)
+CMD uvicorn main:app --host 0.0.0.0 --port ${PORT:-8080}
